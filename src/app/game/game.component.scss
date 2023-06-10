@@ -1,0 +1,67 @@
+.canvasWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .levelWrapper {
+    align-self: center;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    .level{
+      width: 60px;
+      height: 20px;
+      background-color: #232323;
+      color: #d0d0d0;
+      border: none;
+      font-family: 'Press Start 2P', cursive;
+      text-align: center;
+    }
+
+    .level:disabled{
+      background-color: #d0d0d0;
+      color: #232323;
+      pointer-events: none;
+    }
+
+    .level:hover{
+      cursor: pointer;
+      background-color: #d0d0d0;
+      color: #232323;
+    }
+  }
+
+  #canvas {
+    background-color: #232323;
+    transition: background-color 0.2s ease-in-out;
+  }
+}
+
+.resolutionInfo {
+  display: none;
+}
+
+
+@media only screen and (max-width: 999px), screen and (max-height: 599px) {
+  .canvasWrapper {
+    display: none;
+  }
+  .resolutionInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    .errorHeader {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .errorMessage {
+      font-size: 0.8rem;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<div class="canvasWrapper">
+  <div class="levelWrapper">
+    <label>difficulty:</label>
+    <button class="level" id="level1" (click)="changeLevel(1)">1</button>
+    <button class="level" id="level2" (click)="changeLevel(2)">2</button>
+    <button class="level" id="level3" (click)="changeLevel(3)">3</button>
+  </div>
+  <canvas #canvas id="canvas" width="1000" height="500"></canvas>
+</div>
+<div class="resolutionInfo">
+  <div class="errorHeader">screen too small :(</div>
+  <div class="errorMessage">min resolution: 1000 x 600</div>
+  <div class="errorMessage">(not for mobile devices)</div>
+</div>

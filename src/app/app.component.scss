@@ -1,0 +1,28 @@
+.content{
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas: "info" "game";
+  height: 100%;
+
+
+  .topInfo{
+    grid-area: info;
+    background-color: #232323;
+    color: white;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+  }
+
+  .game{
+    grid-area: game;
+    justify-self: center;
+    align-self: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+
