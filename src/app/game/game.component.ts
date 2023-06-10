@@ -94,9 +94,12 @@ export class GameComponent implements OnInit {
   drawStartScreen(ctx: CanvasRenderingContext2D) {
     ctx.clearRect(0, 0, 1000, 500);
     ctx.fillStyle = "white";
+    ctx.beginPath();
     ctx.font = "20px 'Press Start 2P'";
-    ctx.fillText("press any key to start", 280, 240);
+    ctx.textAlign = "center"
+    ctx.fillText("press any key to start", 500, 240);
 
+    ctx.textAlign = "left"
     ctx.font = "13px 'Press Start 2P'";
     ctx.fillText("move up", 490, 350);
     ctx.fillText("move down", 490, 400);
@@ -136,7 +139,8 @@ export class GameComponent implements OnInit {
   drawPauseScreen(ctx: CanvasRenderingContext2D) {
     ctx.fillStyle = "white";
     ctx.font = "20px 'Press Start 2P'";
-    ctx.fillText("game paused", 390, 240);
+    ctx.textAlign = "center"
+    ctx.fillText("game paused", 500, 240);
     ctx.fillStyle = "#B9B9B9";
     for (let i = 0; i <= 500; i += 30) {
       if (i <= 200 || i >= 250) {
@@ -160,9 +164,11 @@ export class GameComponent implements OnInit {
     }
 
     //points
+    ctx.textAlign = "center";
     ctx.font = "20px 'Press Start 2P'";
-    ctx.fillText(this.stats.pPoints.toString(), 230, 40);
-    ctx.fillText(this.stats.rPoints.toString(), 730, 40);
+    ctx.fillText(this.stats.pPoints.toString(), 250, 40);
+    ctx.fillText(this.stats.rPoints.toString(), 750, 40);
+    ctx.textAlign = "left";
 
     //draw ball
     ctx.beginPath();

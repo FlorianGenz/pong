@@ -13,27 +13,28 @@
       width: 60px;
       height: 20px;
       background-color: #232323;
-      color: #d0d0d0;
+      color: white;
       border: none;
       font-family: 'Press Start 2P', cursive;
       text-align: center;
     }
 
     .level:disabled{
-      background-color: #d0d0d0;
+      background-color: white;
       color: #232323;
       pointer-events: none;
     }
 
     .level:hover{
       cursor: pointer;
-      background-color: #d0d0d0;
+      background-color: white;
       color: #232323;
     }
   }
 
   #canvas {
-    background: linear-gradient(90deg, #A23D3D, #232323, #232323,#232323,#232323,#232323,#232323,#232323,#232323, #46A23D) 50%;
+    background: linear-gradient(90deg, #A23D3D, rgb(35, 35, 35, 0.5), rgb(35, 35, 35, 0.5),rgb(35, 35, 35, 0.5),
+      rgb(35, 35, 35, 0.5), rgb(35, 35, 35, 0.5), rgb(35, 35, 35, 0.5), rgb(35, 35, 35, 0.5), rgb(35, 35, 35, 0.5), #46A23D) 50%;
     background-size: 130% ;
     transition: all 0.15s ease-out;
   }

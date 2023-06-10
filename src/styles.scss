@@ -1,14 +1,14 @@
 html {
-  margin: 0px;
+  margin: 0;
   height: 100%;
   width: 100%;
   background-color: #2E302E;
   font-family: 'Press Start 2P', cursive;
-  color: #d0d0d0;
+  color: white;
 }
 
 body {
-  margin: 0px;
+  margin: 0;
   height: 100%;
   width: 100%;
   background: linear-gradient(45deg, #34495E, #494949, #808B96, #D5D8DC);
@@ -18,12 +18,12 @@ body {
 
 @keyframes gradient {
   0% {
-    background-position: 0% 50%;
+    background-position: 0 50%;
   }
   50% {
     background-position: 100% 50%;
   }
   100% {
-    background-position: 0% 50%;
+    background-position: 0 50%;
   }
 }
