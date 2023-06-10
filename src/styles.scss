@@ -1,19 +1,14 @@
-html {
+html, body {
   margin: 0;
   height: 100%;
   width: 100%;
   font-family: 'Montserrat', sans-serif;
   color: white;
-  background: linear-gradient(45deg, #34495E, #494949, #808B96, #D5D8DC);
+  background: #232323 linear-gradient(45deg, #34495E, #494949, #808B96, #D5D8DC);
   background-size: 300% 300%;
   animation: gradient 30s ease-in-out infinite;
 }
 
-body {
-  margin: 0;
-  height: 100%;
-  width: 100%;
-}
 
 @keyframes gradient {
   0% {

@@ -17,7 +17,7 @@
       border: none;
       font-family: 'Press Start 2P', cursive;
       text-align: center;
-      border-radius: 4px;
+      border-radius: 10px;
     }
 
     .level:disabled{
@@ -54,18 +54,19 @@
   .resolutionInfo {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1vw;
     width: 100%;
     justify-content: center;
     align-items: center;
 
     .errorHeader {
-      font-size: 1.2rem;
+      font-size: min(8vw, 20px);
+      padding: 2vw;
       font-weight: bold;
     }
 
     .errorMessage {
-      font-size: 0.8rem;
+      font-size: min(6vw, 14px);
     }
   }
 }
