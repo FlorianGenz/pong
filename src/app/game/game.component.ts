@@ -22,6 +22,17 @@ export class GameComponent implements OnInit {
       this.started = true;
     } else if (event.keyCode === 32) {
       this.pauseGame();
+    } else if (event.keyCode === 37 && (this.lost || this.won)){
+      this.lost = false;
+      this.won = false;
+      this.stats.pPoints = 0;
+      this.stats.rPoints = 0;
+      this.resetGame();
+    }else if (event.keyCode === 39 && this.won){
+      this.won = false;
+      this.stats.pPoints = 0;
+      this.stats.rPoints = 0;
+      this.changeLevel(this.level++);
     }
   }
 
@@ -57,6 +68,7 @@ export class GameComponent implements OnInit {
   playerUp = false;
   playerDown = false;
 
+  maxPoints = 3;
   robotDy = 2.2;
   ballMin = 1.5;
   ballMax = 2.5;
@@ -73,6 +85,10 @@ export class GameComponent implements OnInit {
   animationReq = 0;
   started = false;
   paused = false;
+  level = 1;
+
+  won = false;
+  lost = false;
 
 
   ngOnInit(): void {
@@ -133,10 +149,12 @@ export class GameComponent implements OnInit {
     }
   }
 
-  drawPauseScreen(ctx: CanvasRenderingContext2D) {
+  drawPauseScreen(ctx: CanvasRenderingContext2D, text: string) {
     ctx.fillStyle = "white";
     ctx.font = "20px 'Press Start 2P'";
-    ctx.fillText("game paused", 390, 240);
+    ctx.textAlign = "center";
+    ctx.fillText(text, 500, 240);
+    ctx.textAlign = "left";
     ctx.fillStyle = "#B9B9B9";
     for (let i = 0; i <= 500; i += 30) {
       if (i <= 200 || i >= 250) {
@@ -149,9 +167,14 @@ export class GameComponent implements OnInit {
 
     ctx.clearRect(0, 0, 1000, 500);
 
-
     if (this.paused) {
-      this.drawPauseScreen(ctx);
+      if (this.won) {
+        this.drawPauseScreen(ctx, "You Won!");
+      } else if (this.lost) {
+        this.drawPauseScreen(ctx, "You Lost!");
+      } else {
+        this.drawPauseScreen(ctx, "game paused");
+      }
     } else {
       ctx.fillStyle = "white";
       for (let i = 0; i <= 500; i += 30) {
@@ -187,7 +210,7 @@ export class GameComponent implements OnInit {
       this.rightRec.y += this.rightRec.dy;
     }
 
-    this.handleBall();
+    if (!this.paused) this.handleBall();
     //requestAnimationFrame(() => this.draw(ctx))
   }
 
@@ -211,11 +234,17 @@ export class GameComponent implements OnInit {
       if (this.ball.x + this.ballRadius > 1000) {
         this.stats.pPoints++;
         this.changeBackgroundColor(true);
+        if (this.stats.pPoints == this.maxPoints) {
+          this.handleWin();
+        }
       } else {
         this.stats.rPoints++;
         this.changeBackgroundColor(false);
+        if (this.stats.rPoints == this.maxPoints) {
+          this.handleLoss();
+        }
       }
-      this.resetGame();
+      if (!this.paused) this.resetGame();
     }
 
     //ball hit top/bottom border
@@ -263,7 +292,18 @@ export class GameComponent implements OnInit {
     }
   }
 
+  handleWin() {
+    this.won = true;
+    this.pauseGame();
+  }
+
+  handleLoss() {
+    this.lost = true;
+    this.pauseGame();
+  }
+
   changeLevel(level: number) {
+    this.level = level;
     for (let i = 1; i <= 3; i++) {
       document.getElementById("level" + i)?.removeAttribute("disabled");
     }
