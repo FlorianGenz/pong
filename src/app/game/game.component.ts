@@ -16,7 +16,9 @@ export class GameComponent implements OnInit {
       let canvas = this.myCanvas.nativeElement;
       let ctx = canvas.getContext("2d");
       //this.draw(ctx)
-      setInterval(() => {this.draw(ctx)},1000/142)
+      setInterval(() => {
+        this.draw(ctx)
+      }, 1000 / 142)
       this.started = true;
     } else if (event.keyCode === 32) {
       this.pauseGame();
@@ -131,7 +133,7 @@ export class GameComponent implements OnInit {
     }
   }
 
-  drawPauseScreen(ctx: CanvasRenderingContext2D){
+  drawPauseScreen(ctx: CanvasRenderingContext2D) {
     ctx.fillStyle = "white";
     ctx.font = "20px 'Press Start 2P'";
     ctx.fillText("game paused", 390, 240);
@@ -148,9 +150,9 @@ export class GameComponent implements OnInit {
     ctx.clearRect(0, 0, 1000, 500);
 
 
-    if(this.paused){
+    if (this.paused) {
       this.drawPauseScreen(ctx);
-    }else {
+    } else {
       ctx.fillStyle = "white";
       for (let i = 0; i <= 500; i += 30) {
         ctx.fillRect(499, i, 3, 15);
@@ -208,10 +210,10 @@ export class GameComponent implements OnInit {
     if (this.ball.x + this.ballRadius > 1000 || this.ball.x - this.ballRadius < 0) {
       if (this.ball.x + this.ballRadius > 1000) {
         this.stats.pPoints++;
-        this.changeBackgroundcolor("#46A23D");
+        this.changeBackgroundColor(true);
       } else {
         this.stats.rPoints++;
-        this.changeBackgroundcolor("#A23D3D");
+        this.changeBackgroundColor(false);
       }
       this.resetGame();
     }
@@ -236,7 +238,7 @@ export class GameComponent implements OnInit {
       this.leftRec.dy = 0;
       this.rightRec.dy = 0;
       this.paused = true;
-    }else{
+    } else {
       this.ball.dx = this.currentValues.ball_dx;
       this.ball.dy = this.currentValues.ball_dy;
       this.leftRec.dy = this.currentValues.leftRec_dy;
@@ -261,12 +263,12 @@ export class GameComponent implements OnInit {
     }
   }
 
-  changeLevel(level: number){
-    for (let i = 1; i <= 3; i++){
+  changeLevel(level: number) {
+    for (let i = 1; i <= 3; i++) {
       document.getElementById("level" + i)?.removeAttribute("disabled");
     }
     document.getElementById("level" + level)?.setAttribute("disabled", "true");
-    switch (level){
+    switch (level) {
       case 2:
         this.robotDy = 2.4;
         this.ballMin = 2;
@@ -284,16 +286,20 @@ export class GameComponent implements OnInit {
         break;
     }
     this.resetGame();
-    if (this.paused){
+    if (this.paused) {
       this.pauseGame();
     }
   }
 
-  changeBackgroundcolor(color: string) {
+  changeBackgroundColor(win: boolean) {
     let canvas = document.getElementById("canvas")
     if (canvas) {
-      canvas.style.backgroundColor = color;
-      this.wait(200).then(r => canvas!.style.backgroundColor = "#232323");
+      if (!win) {
+        canvas.style.backgroundPosition = "0%"
+      } else {
+        canvas.style.backgroundPosition = "100%"
+      }
+      this.wait(150).then(r => canvas!.style.backgroundPosition = "50%");
     }
   }
 
