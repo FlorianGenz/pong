@@ -95,12 +95,12 @@ export class GameComponent implements OnInit {
     ctx.clearRect(0, 0, 1000, 500);
     ctx.fillStyle = "white";
     ctx.beginPath();
-    ctx.font = "20px 'Press Start 2P'";
+    ctx.font = "20px 'Montserrat'";
     ctx.textAlign = "center"
     ctx.fillText("press any key to start", 500, 240);
 
     ctx.textAlign = "left"
-    ctx.font = "13px 'Press Start 2P'";
+    ctx.font = "13px 'Montserrat'";
     ctx.fillText("move up", 490, 350);
     ctx.fillText("move down", 490, 400);
     ctx.fillText("pause game", 490, 450);
@@ -108,22 +108,22 @@ export class GameComponent implements OnInit {
     let keyUpImg = new Image();
     keyUpImg.src = "/assets/arrowkeyUp.png";
     keyUpImg.onload = () => {
-      ctx.drawImage(keyUpImg, 420, 327);
+      ctx.drawImage(keyUpImg, 440, 335);
     }
     let keyDownImg = new Image();
     keyDownImg.src = "/assets/arrowkeyDown.png";
     keyDownImg.onload = () => {
-      ctx.drawImage(keyDownImg, 420, 377);
+      ctx.drawImage(keyDownImg, 440, 385);
     }
     let spaceImg = new Image();
     spaceImg.src = "/assets/spaceKey.png";
     spaceImg.onload = () => {
-      ctx.drawImage(spaceImg, 400, 427);
+      ctx.drawImage(spaceImg, 428, 435);
     }
 
     ctx.fillStyle = "#B9B9B9";
 
-    ctx.font = "20px 'Press Start 2P'";
+    ctx.font = "20px 'Montserrat'";
     ctx.fillText(this.stats.pPoints.toString(), 230, 40);
     ctx.fillText(this.stats.rPoints.toString(), 730, 40);
 
@@ -138,7 +138,7 @@ export class GameComponent implements OnInit {
 
   drawPauseScreen(ctx: CanvasRenderingContext2D) {
     ctx.fillStyle = "white";
-    ctx.font = "20px 'Press Start 2P'";
+    ctx.font = "20px 'Montserrat'";
     ctx.textAlign = "center"
     ctx.fillText("game paused", 500, 240);
     ctx.fillStyle = "#B9B9B9";
@@ -165,7 +165,7 @@ export class GameComponent implements OnInit {
 
     //points
     ctx.textAlign = "center";
-    ctx.font = "20px 'Press Start 2P'";
+    ctx.font = "20px 'Montserrat' ";
     ctx.fillText(this.stats.pPoints.toString(), 250, 40);
     ctx.fillText(this.stats.rPoints.toString(), 750, 40);
     ctx.textAlign = "left";

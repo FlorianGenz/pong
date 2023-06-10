@@ -11,12 +11,13 @@
 
     .level{
       width: 60px;
-      height: 20px;
-      background-color: #232323;
+      height: 25px;
+      background-color: rgb(35, 35, 35, 0.5);
       color: white;
       border: none;
       font-family: 'Press Start 2P', cursive;
       text-align: center;
+      border-radius: 4px;
     }
 
     .level:disabled{
@@ -37,6 +38,7 @@
       rgb(35, 35, 35, 0.5), rgb(35, 35, 35, 0.5), rgb(35, 35, 35, 0.5), rgb(35, 35, 35, 0.5), rgb(35, 35, 35, 0.5), #46A23D) 50%;
     background-size: 130% ;
     transition: all 0.15s ease-out;
+    border-radius: 20px;
   }
 }
 
