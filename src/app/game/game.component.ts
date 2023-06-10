@@ -192,11 +192,21 @@ export class GameComponent implements OnInit {
   }
 
   handleBall() {
-    //ball hit by player/robot
+    //ball hit by robot
     if (this.ball.x >= this.rightRec.x && this.ball.x <= this.rightRec.x + this.recWidth &&
-      (this.ball.y >= this.rightRec.y && this.ball.y <= this.rightRec.y + this.recHeight) ||
-      this.ball.x <= this.leftRec.x + this.recWidth && this.ball.x >= this.leftRec.x &&
-      (this.ball.y >= this.leftRec.y && this.ball.y <= this.leftRec.y + this.recHeight)) {
+      (this.ball.y >= this.rightRec.y && this.ball.y <= this.rightRec.y + this.recHeight) && this.ball.dx > 0) {
+      this.ball.dx += 0.1
+      this.ball.dx = -this.ball.dx;
+      if (this.ball.dy < 0) {
+        this.ball.dy = this.getRandomNumber(1.5, 2.5);
+      } else {
+        this.ball.dy = -this.getRandomNumber(1.5, 2.5);
+      }
+    }
+
+    //ball hit by player
+    if(this.ball.x <= this.leftRec.x + this.recWidth && this.ball.x >= this.leftRec.x &&
+      (this.ball.y >= this.leftRec.y && this.ball.y <= this.leftRec.y + this.recHeight) && this.ball.dx < 0){
       this.ball.dx += 0.1
       this.ball.dx = -this.ball.dx;
       if (this.ball.dy < 0) {
