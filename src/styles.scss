@@ -4,9 +4,10 @@ html {
   width: 100%;
   font-family: 'Montserrat', sans-serif;
   color: white;
-  background: linear-gradient(45deg, #34495E, #494949, #808B96, #D5D8DC);
-  background-size: 300% 300%;
-  animation: gradient 30s ease-in-out infinite;
+  background: linear-gradient(45deg, var(--color1), var(--color2), var(--color3), var(--color4));
+  background-size: 200% 200%;
+  animation: gradient var(--animationTime) ease-in-out infinite;
+  overflow: hidden;
 }
 
 body {
@@ -15,12 +16,24 @@ body {
   width: 100%;
 }
 
+:root{
+  --canvasColor: rgb(57, 62, 70, 0.5);
+  --canvasGlowColor: rgb(45, 160, 255);
+
+  --color1: #222831;
+  --color2: #393E46;
+  --color3: #00ADB5;
+  --color4: #EEEEEE;
+
+  --animationTime: 40s;
+}
+
 @keyframes gradient {
   0% {
     background-position: 0 50%;
   }
   50% {
-    background-position: 100% 50%;
+    background-position: 50% 50%;
   }
   100% {
     background-position: 0 50%;

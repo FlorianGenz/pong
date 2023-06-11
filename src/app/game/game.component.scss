@@ -2,12 +2,14 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  position: relative;
 
   .levelWrapper {
     align-self: center;
     display: flex;
     gap: 10px;
     align-items: center;
+    z-index: 5;
 
     .level{
       width: 60px;
@@ -34,12 +36,32 @@
   }
 
   #canvas {
-    background: linear-gradient(90deg, #A23D3D, rgb(35, 35, 35, 0.5), rgb(35, 35, 35, 0.5),rgb(35, 35, 35, 0.5),
-      rgb(35, 35, 35, 0.5), rgb(35, 35, 35, 0.5), rgb(35, 35, 35, 0.5), rgb(35, 35, 35, 0.5), rgb(35, 35, 35, 0.5), #46A23D) 50%;
+    background: linear-gradient(90deg, #A23D3D, var(--canvasColor), var(--canvasColor), var(--canvasColor),
+      var(--canvasColor), var(--canvasColor), var(--canvasColor), var(--canvasColor), var(--canvasColor), #46A23D) 50%;
     background-size: 130% ;
     transition: all 0.15s ease-out;
     border-radius: 20px;
   }
+}
+
+.canvasGlow{
+  position: relative;
+  border-radius: 20px;
+  box-shadow: inset 0 0 1em 0 var(--canvasGlowColor), 0 0 7em 0 var(--canvasGlowColor);
+}
+
+.canvasGlow::before{
+  content: "";
+  position: absolute;
+  background: var(--canvasGlowColor);
+  top: 80%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  transform: perspective(5em) rotateX(20deg) scale(1, 0.25);
+  filter: blur(7em);
+  opacity: 0.4;
 }
 
 .resolutionInfo {
